@@ -1,4 +1,4 @@
-#include <stdio.h>
+##include <stdio.h>
 #include <stdlib.h>
 
 int convert_scale(double data, char type) {
@@ -8,8 +8,7 @@ int convert_scale(double data, char type) {
 
     if (type == 'C' || type == 'c') {
         if(data <= -273.15) {
-            printf("Incorrect data");
-            return 1;       /* Incorrect data exception */
+            printf("Incorrect data"); /* Incorrect data exception */
         } else {
             dataK = data + 273.15;
             dataF = (data * 9/5) + 32;
@@ -21,8 +20,7 @@ int convert_scale(double data, char type) {
 
     if (type == 'F' || type == 'f') {
         if (data <= -459.67) {
-            printf ("Incorrect data");
-            return 1;       /* Incorrect data exception */
+            printf ("Incorrect data"); /* Incorrect data exception */
         } else {
             dataC = (data - 32) * 5 / 9;
             dataK = ((data - 32)/ (9/5)) + 273.15;
@@ -35,8 +33,7 @@ int convert_scale(double data, char type) {
 
     if (type == 'K' || type == 'k') {
         if (data <= 0) {
-            printf ("Incorrect data");
-            return 1;       /* Incorrect data exception */
+            printf ("Incorrect data"); /* Incorrect data exception */
         } else {
             dataC = data - 273.15;
             dataF = ((data - 273.15) * 9/5) + 32;
@@ -48,12 +45,10 @@ int convert_scale(double data, char type) {
     }
 
     if (!(type == 'C' || type == 'c' || type == 'F' || type == 'f' || type == 'K' || type == 'k')) {
-        printf ("Type must be K, F or C");
-        return 2;       /* Incorrect type exception */
+        printf ("Type must be K, F or C"); /* Incorrect type exception */
     }
 
-    return 0;       /* Success */
-}
+    
 
 
 int main(int argc, char *argv[]) {
@@ -63,33 +58,21 @@ int main(int argc, char *argv[]) {
     if (argc == 2) {
         double data = atof(argv[1]);
 
-        result = convert_scale(data, 'C');
-        if (result != 0) {
-            return result;
-        }
-
+        result = convert_scale(data, 'C');}
         printf("\n");
-        result = convert_scale(data, 'F');
-        if (result != 0) {
-            return result;
-        }
-
+    
+        result = convert_scale(data, 'F');}
         printf("\n");
-        result = convert_scale(data, 'K');
-        if (result != 0) {
-            return result;
-        }
-    }
-    /*If both arguments are passed*/
+    
+        result = convert_scale(data, 'K');}
+    } /*If both arguments are passed*/
+    
     else
         if (argc == 3) {
             double data = atof(argv[1]);
-            result = convert_scale(data, *argv[2]);
-            if (result != 0) {
-                return result;
-            }
-        }
+            result = convert_scale(data, *argv[2]); }
 
     return 0;
 }
+
 
